@@ -1,0 +1,233 @@
+# Switch      : 800542-00-04 1339N-47373 Rev 4.0 BootROM: 1.0.1.1    IMG: 15.3.2.11
+# PSU-1       : Internal Power Supply
+# 
+# Image   : ExtremeXOS version 15.3.2.11 v1532b11 by release-manager
+#           on Tue Jun 18 15:28:54 EDT 2013
+# BootROM : 1.0.1.1
+# Diagnostics : 1.3
+# Diagnostics never ran
+# Enabled License Level:
+# 	L2 Edge
+# Enabled Feature Packs:
+# 	None
+# 
+# SysName:          SEGAVRC001
+# SysLocation:      Ruddamansgatan 27, Gavle, Sweden
+# SysContact:       support@connectel.se, +46 771 12 12 10
+# System MAC:       00:04:96:8F:B8:7A
+# System Type:      X430-24t
+# 
+# SysHealth check:  Enabled (Normal)
+# Recovery Mode:    All
+# System Watchdog:  Enabled
+# 
+# Timezone:         [Auto DST Enabled] GMT Offset: 60 minutes, name is CET.
+#                   DST of 60 minutes is currently in effect, name is not set.
+#                   DST begins every second Sunday March at 2:00
+#                   DST ends every first Sunday November at 2:00
+# 
+# 
+# Current State:    OPERATIONAL
+# Image Selected:   primary
+# Primary ver:      15.3.2.11
+# Secondary ver:    15.3.2.11
+# 
+# Config Selected:  primary.cfg
+# 
+# primary.cfg       Created by ExtremeXOS version 15.3.2.11
+#                   134065 bytes saved on Thu Aug 11 16:36:56 2016
+#
+# Module devmgr configuration.
+#
+configure snmp sysName "SEGAVRC001"
+configure snmp sysLocation "Ruddamansgatan 27, Gavle, Sweden"
+configure snmp sysContact "support@connectel.se, +46 771 12 12 10"
+configure timezone name CET 60 autodst
+configure sys-recovery-level switch reset
+
+#
+# Module vlan configuration.
+#
+configure vlan default delete ports all
+configure vr VR-Default delete ports 1-28
+configure vr VR-Default add ports 1-28
+configure vlan default delete ports 1-28
+enable jumbo-frame ports all
+configure vman ethertype 0x8100 secondary
+create vman "CPEMGMT"
+configure vman CPEMGMT tag 402
+create vlan "MGMTVLAN"
+configure vlan MGMTVLAN tag 401
+create vlan "VLAN218"
+configure vlan VLAN218 description "Wikmans Bil"
+configure vlan VLAN218 tag 218
+create vlan "VLAN219"
+configure vlan VLAN219 description "Wikmans Bil Merchedes"
+configure vlan VLAN219 tag 219
+create vlan "VLAN220"
+configure vlan VLAN220 tag 220
+create vlan "VLAN512"
+configure vlan VLAN512 description "MLT Gavle Lan"
+configure vlan VLAN512 tag 512
+configure ports 2 ethertype secondary
+disable port 3
+disable port 4
+disable port 5
+disable port 6
+disable port 7
+disable port 8
+disable port 9
+disable port 10
+disable port 11
+disable port 12
+disable port 13
+disable port 14
+disable port 15
+disable port 16
+disable port 17
+disable port 18
+disable port 19
+disable port 20
+disable port 21
+disable port 22
+disable port 23
+disable port 24
+configure ports 25 ethertype secondary
+disable port 26
+disable port 27
+configure ports 28 ethertype secondary
+configure vman CPEMGMT add ports 2, 25, 28 tagged
+configure vlan MGMTVLAN add ports 28 tagged
+configure vlan MGMTVLAN add ports 1 untagged
+configure vlan VLAN218 add ports 25, 28 tagged
+configure vlan VLAN219 add ports 25, 28 tagged
+configure vlan VLAN220 add ports 25, 28 tagged
+configure vlan VLAN512 add ports 2, 28 tagged
+configure vlan Mgmt ipaddress 172.16.254.7 255.255.255.0
+
+#
+# Module fdb configuration.
+#
+
+#
+# Module rtmgr configuration.
+#
+configure iproute add default 172.16.254.1 vr VR-Mgmt
+
+#
+# Module mcmgr configuration.
+#
+configure forwarding ipmc lookup-key mac-vlan
+
+#
+# Module aaa configuration.
+#
+configure account admin encrypted "BnxZcf$LDmfMRjSBNJM82WeDjZkj0"
+
+#
+# Module acl configuration.
+#
+
+
+
+
+#
+# Module cfgmgr configuration.
+#
+
+#
+# Module dosprotect configuration.
+#
+
+#
+# Module dot1ag configuration.
+#
+
+#
+# Module eaps configuration.
+#
+
+#
+# Module edp configuration.
+#
+
+#
+# Module elrp configuration.
+#
+
+#
+# Module ems configuration.
+#
+
+#
+# Module epm configuration.
+#
+
+#
+# Module erps configuration.
+#
+
+#
+# Module esrp configuration.
+#
+
+#
+# Module etmon configuration.
+#
+
+#
+# Module exsshd configuration.
+#
+enable ssh2 vr VR-Mgmt
+
+#
+# Module hal configuration.
+#
+
+#
+# Module idMgr configuration.
+#
+
+#
+# Module ipSecurity configuration.
+#
+
+#
+# Module lldp configuration.
+#
+
+#
+# Module mrp configuration.
+#
+
+#
+# Module netLogin configuration.
+#
+
+#
+# Module netTools configuration.
+#
+
+#
+# Module poe configuration.
+#
+
+#
+# Module snmpMaster configuration.
+#
+
+#
+# Module stp configuration.
+#
+configure mstp region 0004968fb87a
+configure stpd s0 delete vlan default ports all
+disable stpd s0 auto-bind vlan default
+enable stpd s0 auto-bind vlan Default
+
+#
+# Module telnetd configuration.
+#
+
+#
+# Module thttpd configuration.
+#
