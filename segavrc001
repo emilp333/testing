@@ -58,6 +58,8 @@ create vman "CPEMGMT"
 configure vman CPEMGMT tag 402
 create vlan "MGMTVLAN"
 configure vlan MGMTVLAN tag 401
+create vlan "test"
+configure vlan test tag 4012
 create vlan "VLAN218"
 configure vlan VLAN218 description "Wikmans Bil"
 configure vlan VLAN218 tag 218
@@ -99,6 +101,7 @@ configure ports 28 ethertype secondary
 configure vman CPEMGMT add ports 2, 25, 28 tagged
 configure vlan MGMTVLAN add ports 28 tagged
 configure vlan MGMTVLAN add ports 1 untagged
+configure vlan test add ports 1 tagged
 configure vlan VLAN218 add ports 25, 28 tagged
 configure vlan VLAN219 add ports 25, 28 tagged
 configure vlan VLAN220 add ports 25, 28 tagged
