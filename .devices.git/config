@@ -1,0 +1,13 @@
+[core]
+	bare = true
+	filemode = true
+[core]
+	repositoryformatversion = 0
+[user]
+	name = emilp333
+[user]
+	email = emil.persson@connectel.se
+[remote "origin"]
+	url = git@github.com:emilp333/testing.git
+[remote "origin"]
+	fetch = +refs/heads/*:refs/remotes/origin/*
